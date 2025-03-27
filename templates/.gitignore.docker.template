@@ -1,0 +1,32 @@
+# Docker-specific ignore patterns
+
+# Docker volumes and data directories
+docker-data/
+.docker/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+!.env.*.template
+
+# Docker logs
+*.log
+
+# Docker build context
+.dockerignore
+
+# Docker temp files
+.docker-tmp/
+
+# Docker compose override files (often contain local customizations)
+docker-compose.override.yml
+
+# Docker build artifacts
+dist/
+node_modules/
+build/
+
+# Ignore Docker generated files
+Dockerfile.*
+docker-compose.*.yml
