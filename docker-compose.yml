@@ -1,18 +1,29 @@
 services:
   vite-react-app:
     build:
+      # On pointe vers le dossier courant, c.-à-d. "table-des-rois"
+      # quand on lance "docker-compose -f docker/docker-compose.yml ..."
       context: .
-      dockerfile: Dockerfile
+      # Le Dockerfile se trouve dans "docker/Dockerfile"
+      dockerfile: ./docker/Dockerfile
+
     container_name: vite-react-dev
+
+    # On monte tout le code source dans /app
     volumes:
       - ./:/app
       - /app/node_modules
+
     ports:
       - "5173:5173"
+
     environment:
       - NODE_ENV=development
       - CHOKIDAR_USEPOLLING=true
+
     restart: unless-stopped
     stdin_open: true
     tty: true
+
+    # Lancement de Vite en mode dev
     command: npm run dev -- --host 0.0.0.0
